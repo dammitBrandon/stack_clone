@@ -6,11 +6,11 @@ class UsersController < ApplicationController
                      password_confirmation: params[:user][:password_confirmation])
     if @user.save
       flash[:success] = "Registration Successful!"
+      session[:id] = @user.id
       redirect_to root_path
     else 
       flash[:error] = "Registration Failed, please try again."
       redirect_to root_path
     end
   end
-
 end
