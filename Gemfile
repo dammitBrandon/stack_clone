@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 
 # Gems used only for assets and not required
@@ -20,11 +21,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test, :developement do 
+group :development, :test do 
   gem 'rspec-rails'
+end
+
+group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl'
+  gem 'database_cleaner'
 end
 
 gem 'jquery-rails'
