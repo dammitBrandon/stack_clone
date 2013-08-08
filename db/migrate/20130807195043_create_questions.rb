@@ -1,8 +1,9 @@
-class CreateQuestion < ActiveRecord::Migration
+class CreateQuestions < ActiveRecord::Migration
   def up
     create_table :questions do |t|
-      t.string :title
-      t.text :text
+      t.string     :title
+      t.text       :text
+      t.belongs_to :user
 
       t.timestamps
     end

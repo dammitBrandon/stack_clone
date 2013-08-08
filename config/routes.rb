@@ -1,8 +1,13 @@
 StackClone::Application.routes.draw do
   resources :answers
-  resource  :home, :only => [:show]
+  resources :users
   resources :questions
-  resources :sessions, :only => [:create, :destroy]
+  # resources :sessions, :only => [:create, :show, :destroy]
+
+  post '/sessions/new', to: 'sessions#new', as: 'login'
+  post '/sessions/create', to: 'sessions#create', as: 'signup'
+  get  '/sessions/show', to: 'sessions#show', as: 'home'
+  get  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
   
   # For Abi and L||a's review
   # get   '/question' => 'question#index'       
