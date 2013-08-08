@@ -30,6 +30,7 @@ group :test do
   gem 'capybara'
   gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 gem 'jquery-rails'

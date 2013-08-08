@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     if user.authenticate(params[:password])
-      flash[:success] = "Welcome #{user.name}!"
+      flash[:login] = "Welcome"
       session[:id] = user.id
-      redirect_to user_path(user)
+      redirect_to root_path
     else
       flash[:error] = "Signin failed, please try again."
       redirect_to new
@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
+    flash[:logout] = "Logout Successful"
     redirect_to root_path
   end
   
