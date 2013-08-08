@@ -1,4 +1,19 @@
 StackClone::Application.routes.draw do
+  resources :answers
+  resource  :home, :only => [:show]
+  resources :questions
+  resources :sessions, :only => [:create, :destroy]
+  
+  # For Abi and L||a's review
+  # get   '/question' => 'question#index'       
+  # get   '/question/new' => 'question#new'
+  # get   '/question/:id' => 'question#show'
+  # get   '/question/:id/edit' => 'question#edit'
+  # post  '/question' => 'question#create'     
+  # post  '/question/:id' => 'question#destroy'
+  # post  '/question/:id' => 'question#update'  
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +63,7 @@ StackClone::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'homes#show'
 
   # See how all your routes lay out with "rake routes"
 
