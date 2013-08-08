@@ -9,7 +9,7 @@ StackClone::Application.routes.draw do
   get '/sessions/new', to: 'sessions#new', as: 'login_form'
   post '/sessions/create', to: 'sessions#create', as: 'login'
   get  '/sessions/show', to: 'sessions#show', as: 'home'
-  get  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
+  post  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
   
   # For Abi and L||a's review
   # get   '/question' => 'question#index'       
