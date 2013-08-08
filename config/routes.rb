@@ -4,21 +4,23 @@ StackClone::Application.routes.draw do
   post '/users/create', to: 'users#create', as: 'signup'
   resources :users, :except => [:create]
   resources :questions
+  resources :comments
   # resources :sessions, :only => [:create, :show, :destroy]
 
   get '/sessions/new', to: 'sessions#new', as: 'login_form'
   post '/sessions/create', to: 'sessions#create', as: 'login'
   get  '/sessions/show', to: 'sessions#show', as: 'home'
+
   post  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
   
   # For Abi and L||a's review
-  # get   '/question' => 'question#index'       
+  # get   '/question' => 'question#index'
   # get   '/question/new' => 'question#new'
   # get   '/question/:id' => 'question#show'
   # get   '/question/:id/edit' => 'question#edit'
-  # post  '/question' => 'question#create'     
+  # post  '/question' => 'question#create'
   # post  '/question/:id' => 'question#destroy'
-  # post  '/question/:id' => 'question#update'  
+  # post  '/question/:id' => 'question#update'
 
 
   # The priority is based upon order of creation:
