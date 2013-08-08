@@ -1,11 +1,13 @@
 StackClone::Application.routes.draw do
   resources :answers
-  resources :users
+
+  post '/users/create', to: 'users#create', as: 'signup'
+  resources :users, :except => [:create]
   resources :questions
   # resources :sessions, :only => [:create, :show, :destroy]
 
-  post '/sessions/new', to: 'sessions#new', as: 'login'
-  post '/sessions/create', to: 'sessions#create', as: 'signup'
+  get '/sessions/new', to: 'sessions#new', as: 'login_form'
+  post '/sessions/create', to: 'sessions#create', as: 'login'
   get  '/sessions/show', to: 'sessions#show', as: 'home'
   get  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
   
