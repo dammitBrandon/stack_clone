@@ -1,13 +1,14 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all#order("created_at DESC")
+    @questions = Question.all
     current_user
   end
 
   def show
     @question = Question.find_by_id(params[:id])
     @answers = Answer.find_all_by_question_id(params[:id])
+    @answer = Answer.new
   end
 
   def edit

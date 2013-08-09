@@ -3,15 +3,16 @@
 <h2><%= @question.title %></h2>
 
 <p> <%= @question.text %> </p>
-<<<<<<< HEAD
 <p> By: <%= @question.user.name %> </p>
 <ul>Tags:
   <% @question.tags.each do |tag| %>
   <li><%= tag.title %></li>
   <% end %>
 </ul>
-=======
-<p><%= link_to "Q Comment",{ controller: 'comments', action: 'new', question_id: @question.id } %></p>
+
+<% if current_user %>
+  <p><%= link_to "Q Comment",{ controller: 'comments', action: 'new', question_id: @question.id } %></p>
+<%end%>
 <% if @question.comments %>
   <% @question.comments.each do |comment| %>
    <p><%= comment.text %></p>
@@ -21,24 +22,29 @@
   <% end %>
 <% end %>
 
-
->>>>>>> 92c6a50cef170056c55525f3b17ec5406a93f8b5
 <h2>Answers:</h2>
+<%= render "shared/edit_or_create_answer_form", object: @answer, layout: false %>
 <% if @answers %>
   <ul>
-  <% @answers.each do |answer| %>
-    <li> <%= answer.text %> 
-      <p>By <%= answer.user.name %></p>
-      <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
-      <% if answer.comments %>
-       <% answer.comments.each do |comment| %>
-        <p><%= comment.text %></p>
-        <p>By: <%= comment.user.name %></p>
-        <p>On: <%= comment.created_at %></p>
-        <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
-       <% end %>
-      <% end %>
-    </li>
-  <%end%>
+    <% @answers.each do |answer| %>
+      <li> <%= answer.text %> 
+        <p>By <%= answer.user.name %></p>
+        <% if answer.user_id == session[:id] %>
+          <%= button_to 'Edit', edit_answer_path(answer), :method => 'get'%>
+        <% end %>
+        <% if current_user %>
+          <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
+        <%end%>  
+        <% if answer.comments %>
+          <% answer.comments.each do |comment| %>
+            <p><%= comment.text %></p>
+            <p>By: <%= comment.user.name %></p>
+            <p>On: <%= comment.created_at %></p>
+            <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
+          <% end %>
+        <%end%>  
+      </li>
+    <%end%>
   </ul>
 <%end%>
+

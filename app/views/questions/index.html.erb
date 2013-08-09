@@ -7,7 +7,7 @@
     <br>
     By <%= question.user.name  %>
     <% if question.user_id == session[:id] %>
-      <%= button_to 'Edit', edit_question_path(question) %>
+      <%= button_to 'Edit', edit_question_path(question), :method => 'get' %>
     <% end %>
   </li>
   <% end %>

@@ -1,0 +1,16 @@
+<% if current_user %>
+  <%= form_for @answer do |f| %>
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <%= error %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+    <% if @answer.question_id == nil%>
+      <%= f.hidden_field :question_id, :value => @question.id %>
+    <%end%>
+    <%= f.submit %>
+  <% end %>
+<%end%>
