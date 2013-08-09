@@ -37,7 +37,7 @@ describe "answer path" do
       click_button "Delete"
     end.to change(Answer, :count).by(-1)
     sleep(5)
-    expect( page ).to have_content("WACK")
+    expect(current_path).to eq questions_path
   end
   
 end
