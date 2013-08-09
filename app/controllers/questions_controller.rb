@@ -19,11 +19,10 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    puts "params below!"
-    p params
     @question = current_user.questions.new(params[:question])
     if @question.valid?
       @question.save
+      @question.create_tags
       redirect_to question_path(@question)
     else
       @errors = @question.errors.full_messages
