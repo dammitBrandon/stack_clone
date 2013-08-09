@@ -3,13 +3,13 @@
 <h2><%= @question.title %></h2>
 
 <p> <%= @question.text %> </p>
+<p> By: <%= @question.user.name %> </p>
 
 <h2>Answers:</h2>
-<%= if @answers %>
+<% if @answers %>
   <ul>
   <% @answers.each do |answer| %>
     <li> <%= answer.text %> 
-      <br>
       <p>By <%= answer.user.name %></p>
     </li>
   <%end%>
