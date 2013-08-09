@@ -1,0 +1,13 @@
+<% @answer = Answer.new %>
+<%= form_for @answer do |f| %>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <%= error %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+  <%= f.hidden_field :question_id, :value => @question.id %>
+  <%= f.submit %>
+<% end %>

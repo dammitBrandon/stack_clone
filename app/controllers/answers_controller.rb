@@ -17,10 +17,11 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = current_user.answer.new(params[:answer])
+    @answer = current_user.answers.new(params[:answer])
+    puts @answer
     if @answer.valid?
       @answer.save
-      redirect_to question_path(@answer.question)
+      redirect_to question_path(@answer.question.id)
     else
       @errors = @answer.errors.full_message
       render question_path(@answer.question)
