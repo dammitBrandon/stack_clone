@@ -3,14 +3,33 @@
 <h2><%= @question.title %></h2>
 
 <p> <%= @question.text %> </p>
+<p><%= link_to "Q Comment",{ controller: 'comments', action: 'new', question_id: @question.id } %></p>
+<% if @question.comments %>
+  <% @question.comments.each do |comment| %>
+   <p><%= comment.text %></p>
+   <p>By: <%= comment.user.name %></p>
+   <p>On: <%= comment.created_at %></p>
+   <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
+  <% end %>
+<% end %>
+
 
 <h2>Answers:</h2>
-<%= if @answers %>
+<% if @answers %>
   <ul>
   <% @answers.each do |answer| %>
     <li> <%= answer.text %> 
       <br>
       <p>By <%= answer.user.name %></p>
+      <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
+      <% if answer.comments %>
+       <% answer.comments.each do |comment| %>
+        <p><%= comment.text %></p>
+        <p>By: <%= comment.user.name %></p>
+        <p>On: <%= comment.created_at %></p>
+        <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
+       <% end %>
+      <% end %>
     </li>
   <%end%>
   </ul>

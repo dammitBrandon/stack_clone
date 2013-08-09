@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :questions
   has_many :answers
+  has_many :comments
 
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password

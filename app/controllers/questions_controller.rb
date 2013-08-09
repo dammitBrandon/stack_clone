@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by_id(params[:id])
-    @answers = Answer.find_by_question_id(params[:id])
+    @answers = Answer.find_all_by_question_id(params[:id])
   end
 
   def edit 
