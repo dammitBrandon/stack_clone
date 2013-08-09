@@ -4,7 +4,11 @@
 
 <p> <%= @question.text %> </p>
 <p> By: <%= @question.user.name %> </p>
-
+<ul>Tags:
+  <% @question.tags.each do |tag| %>
+  <li><%= tag.title %></li>
+  <% end %>
+</ul>
 <h2>Answers:</h2>
 <% if @answers %>
   <ul>
