@@ -22,7 +22,7 @@
 
 
 <h2>Answers:</h2>
-<%= render "shared/edit_or_create_answer_form", layout: false %>
+<%= render "shared/edit_or_create_answer_form", object: @answer, layout: false %>
 <% if @answers %>
   <ul>
     <% @answers.each do |answer| %>
@@ -44,3 +44,4 @@
     <%end%>
   </ul>
 <%end%>
+

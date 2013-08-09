@@ -26,7 +26,6 @@ describe "questions path" do
   end
 
   it "should edit the body of a question" do
-
     visit edit_question_url(question)
     fill_in "Text", with: "COW"
     click_button "Update Question"
