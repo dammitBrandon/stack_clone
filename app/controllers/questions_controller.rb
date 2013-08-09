@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all#order("created_at DESC")
+    @questions = Question.all
     current_user
   end
 

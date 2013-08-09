@@ -1,2 +1,3 @@
+<p><%= link_to "Home", { controller: 'questions', action: 'index'}%></p>
 <%= render partial: "shared/edit_or_create_question_form", layout: false %>
 <%= button_to 'Delete', question_path(@question), :method => 'delete' %>
