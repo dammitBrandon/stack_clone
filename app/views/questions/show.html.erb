@@ -1,3 +1,9 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+  <%= error %>
+  <% end %>
+<% end %>
+
 <h1>Question <%= @question.id %></h1>
 
 <h2><%= @question.title %></h2>
@@ -27,14 +33,14 @@
 <% if @answers %>
   <ul>
     <% @answers.each do |answer| %>
-      <li> <%= answer.text %> 
+      <li> <%= answer.text %>
         <p>By <%= answer.user.name %></p>
         <% if answer.user_id == session[:id] %>
           <%= button_to 'Edit', edit_answer_path(answer), :method => 'get'%>
         <% end %>
         <% if current_user %>
           <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
-        <%end%>  
+        <%end%>
         <% if answer.comments %>
           <% answer.comments.each do |comment| %>
             <p><%= comment.text %></p>
@@ -42,7 +48,7 @@
             <p>On: <%= comment.created_at %></p>
             <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
           <% end %>
-        <%end%>  
+        <%end%>
       </li>
     <%end%>
   </ul>
