@@ -8,6 +8,7 @@ describe Tag do
   context 'associations' do
     it { should have_many(:tag_questions)}
     it { should have_many(:questions) }
+    it { should belong_to(:user)}
   end
 
 end

@@ -1,5 +1,8 @@
 class Tag < ActiveRecord::Base
-  validates_presence_of :title
-  has_many :tag_questions
+  attr_accessible :title
+  validates :title, presence: true, uniqueness: true 
+  has_many :tag_questions, dependent: :destroy 
   has_many :questions, :through => :tag_questions
+  belongs_to :user
+  
 end
