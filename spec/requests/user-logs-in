@@ -1,0 +1,13 @@
+require 'spec_helper'
+
+  describe "A user logs into the application" do
+    before { visit root_path }
+
+    context "using login form" do
+      before { sign_in }
+      it "should login a user" do
+        expect(page).to have_content 'Welcome'
+      end
+    end
+  end
+end
