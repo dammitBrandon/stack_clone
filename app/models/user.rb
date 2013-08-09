@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
-  validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
-  validates :email, format: {with: /.+@.+\..+/ }
-  validates :password, presence: true
-
-  has_many :questions
+  attr_accessible :email, :name, :password, :password_confirmation
+  
   has_many :answers
+  has_many :comments
+  has_many :questions
   has_many :tags
 
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: {with: /.+@.+\..+/ }
+  validates :name, presence: true
+  validates :password, presence: true
 
-  attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 end
