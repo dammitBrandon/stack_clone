@@ -1,8 +1,0 @@
-<% if session[:id] %>
-  <%= flash[:login] %>
-  <%= render partial: "shared/logout_button", layout: false %>
-<% else %>
-  <%= flash[:logout] %>
-  <%= render partial: "shared/signup_form", layout: false%>
-  <%= render partial: "shared/login_form", layout: false%>
-<% end %>
