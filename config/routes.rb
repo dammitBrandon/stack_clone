@@ -1,15 +1,13 @@
 StackClone::Application.routes.draw do
   resources :answers
-
-  post '/users/create', to: 'users#create', as: 'signup'
-  resources :users, :except => [:create]
   resources :questions
-  # resources :sessions, :only => [:create, :show, :destroy]
-
-  get '/sessions/new', to: 'sessions#new', as: 'login_form'
-  post '/sessions/create', to: 'sessions#create', as: 'login'
-  get  '/sessions/show', to: 'sessions#show', as: 'home'
-  post  '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
+  resources :users, :except => [:create]
+  
+  get  '/sessions/new',     to: 'sessions#new',     as: 'login_form'
+  get  '/sessions/show',    to: 'sessions#show',    as: 'home'
+  post '/users/create',     to: 'users#create',     as: 'signup'
+  post '/sessions/destroy', to: 'sessions#destroy', as: 'logout'
+  post '/sessions/create',  to: 'sessions#create',  as: 'login'
   
   # For Abi and L||a's review
   # get   '/question' => 'question#index'       
