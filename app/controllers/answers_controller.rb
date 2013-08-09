@@ -1,11 +1,11 @@
 class AnswersController < ApplicationController
 
   def index
-    
+
   end
 
   def show
-    
+
   end
 
   def edit
@@ -18,12 +18,12 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.new(params[:answer])
-    if @answer.valid?
-      @answer.save
+    if @answer.save
       redirect_to question_path(@answer.question.id)
     else
-      @errors = @answer.errors.full_message
-      render question_path(@answer.question)
+      @errors = @answer.errors.full_messages
+      flash[:errors] = @errors
+      redirect_to :back
     end
   end
 
@@ -33,7 +33,7 @@ class AnswersController < ApplicationController
     Answer.destroy(params[:id])
     redirect_to questions_path(@question)
   end
-  
+
   def update
     @answer = Answer.find_by_id(params[:id])
     @answer.update_attributes(params[:answer])
