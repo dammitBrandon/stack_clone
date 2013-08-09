@@ -1,4 +1,6 @@
 <%= form_tag login_path do %>
+  <%= flash[:error] %>
+
   <%= label_tag :email %>
   <%= text_field_tag :email %>
  
