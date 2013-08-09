@@ -1,0 +1,12 @@
+<%= form_for @comment, :method => :post do |f| %>
+
+ <%= f.label :text %>
+ <%= f.text_field :text %>
+ <%= f.hidden_field :commentable_type, value: @type %>
+ <%= f.hidden_field :commentable_id, value: @commentable_id %>
+ 
+
+ <%= submit_tag('Comment') %>
+<% end %>
+
+ 
