@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
 
   belongs_to :user
   has_many   :answers
-  has_many   :comments
+  has_many   :comments, as: :commentable
   has_many   :tag_questions, dependent: :destroy 
   has_many   :tags, :through => :tag_questions 
 
