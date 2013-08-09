@@ -1,14 +1,11 @@
 class CreateComments < ActiveRecord::Migration
-  def up
+  def change
     create_table :comments do |t|
-      t.string :text
+      t.string     :text
       t.belongs_to :user
+      t.references :commentable, polymorphic: true 
 
       t.timestamps
     end
-  end
-
-  def down
-    drop_table :comments
   end
 end
