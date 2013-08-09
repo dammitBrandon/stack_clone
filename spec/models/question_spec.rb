@@ -8,5 +8,8 @@ describe Question do
 
   context 'associations' do
     it { should belong_to(:user) }
+    it { should have_many(:tag_questions)}
+    it { should have_many(:tags)}
+    it { should have_many(:comments)}
   end
 end
