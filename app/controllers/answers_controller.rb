@@ -18,7 +18,6 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.new(params[:answer])
-    puts @answer
     if @answer.valid?
       @answer.save
       redirect_to question_path(@answer.question.id)
