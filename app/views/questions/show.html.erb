@@ -10,7 +10,9 @@
   <% end %>
 </ul>
 
-<p><%= link_to "Q Comment",{ controller: 'comments', action: 'new', question_id: @question.id } %></p>
+<% if current_user %>
+  <p><%= link_to "Q Comment",{ controller: 'comments', action: 'new', question_id: @question.id } %></p>
+<%end%>
 <% if @question.comments %>
   <% @question.comments.each do |comment| %>
    <p><%= comment.text %></p>
@@ -30,7 +32,9 @@
         <% if answer.user_id == session[:id] %>
           <%= button_to 'Edit', edit_answer_path(answer), :method => 'get'%>
         <% end %>
-        <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
+        <% if current_user %>
+          <p><%= link_to "A Comment",{ controller: 'comments', action: 'new', answer_id: answer.id } %></p>
+        <%end%>  
         <% if answer.comments %>
           <% answer.comments.each do |comment| %>
             <p><%= comment.text %></p>
